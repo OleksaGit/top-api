@@ -1,0 +1,1 @@
+export const ID_VALIDATION_ERROR = 'Формат id не відповідає типу objectId'
