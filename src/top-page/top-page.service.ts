@@ -26,6 +26,10 @@ export class TopPageService {
 
 	}
 
+	async findByText(text: string) {
+		return this.topPageModel.find({ $text: {$search: text, $caseSensitive: false } }).exec()
+	}
+
 	async deleteById(id) {
 		return this.topPageModel.findByIdAndDelete(id).exec()
 	}
