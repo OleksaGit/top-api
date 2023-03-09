@@ -15,7 +15,7 @@ export class CreateProductDto {
 	image: string;
 
 	@IsString()
-	tittle: string;
+	title: string;
 
 	@IsNumber()
 	price: number;
