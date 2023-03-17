@@ -11,6 +11,7 @@ import { getMongoConfig } from './configs/mongo.config';
 import { FilesModule } from './files/files.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { getTelegramConfig } from './configs/telegram.config';
+import { CurrencyModule } from './currency/currency.module';
 
 @Module({
   	imports: [
@@ -29,7 +30,8 @@ import { getTelegramConfig } from './configs/telegram.config';
 			imports: [ConfigModule],
 			inject: [ConfigService],
 			useFactory: getTelegramConfig,
-		})
+		}),
+		CurrencyModule
   	],
   	controllers: [AppController],
   	providers: [AppService],

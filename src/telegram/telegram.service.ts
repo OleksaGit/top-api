@@ -13,6 +13,16 @@ export class TelegramService {
 	) {
 		this.options = options;
 		this.bot = new Telegraf(options.token)
+	//	this.bot.on('text', (ctx) => {
+		//
+		// 			const message = ctx.message.text;
+		//
+		// 				console.log(`${ctx.from.first_name} - ${message}`);
+		//
+		// 				ctx.reply(`${ctx.from.first_name} it's you? That my answer: ${message}`);
+		//
+		// 		});
+		// 		this.bot.launch();
 	}
 
 	async sendMessage(message: string, chatId: string = this.options.chatId) {
