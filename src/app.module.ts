@@ -12,6 +12,7 @@ import { FilesModule } from './files/files.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { getTelegramConfig } from './configs/telegram.config';
 import { CurrencyModule } from './currency/currency.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   	imports: [
@@ -31,7 +32,8 @@ import { CurrencyModule } from './currency/currency.module';
 			inject: [ConfigService],
 			useFactory: getTelegramConfig,
 		}),
-		CurrencyModule
+		CurrencyModule,
+		ScheduleModule.forRoot(),
   	],
   	controllers: [AppController],
   	providers: [AppService],

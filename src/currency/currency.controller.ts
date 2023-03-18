@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/c
 import { TelegramService } from '../telegram/telegram.service';
 import { CurrencyService } from './currency.service';
 import { CurrenciesDto } from './dto/currencies.dto';
+import { Cron } from '@nestjs/schedule';
 
 
 @Controller('currencies')
@@ -17,7 +18,7 @@ export class CurrencyController {
 		return this.currencyService.create(dto);
 	}
 
-
+	@Cron('0 9 * * *')
 	@UsePipes(new ValidationPipe())
 	@Get('/')
 	async getCurrencies() {
