@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { TelegramService } from '../telegram/telegram.service';
 import { CurrencyService } from './currency.service';
 import { CurrenciesDto } from './dto/currencies.dto';
@@ -15,6 +15,13 @@ export class CurrencyController {
 	@Post('create')
 	async create(@Body() dto: CurrenciesDto) {
 		return this.currencyService.create(dto);
+	}
+
+
+	@UsePipes(new ValidationPipe())
+	@Get('/')
+	async getCurrencies() {
+		return this.currencyService.getCurrencies();
 	}
 
 }
