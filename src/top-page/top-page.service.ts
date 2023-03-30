@@ -30,7 +30,7 @@ export class TopPageService {
 			{
 				$group: {
 					_id: { secondCategory: '$secondCategory'},
-					pages: { $push: { alias: '$alias', title: '$title' } }
+					pages: { $push: { alias: '$alias', title: '$title', category: '$category', _id: '$_id'} }
 				}
 			}
 		]).exec()
