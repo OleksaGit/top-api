@@ -18,6 +18,7 @@ export class CurrencyController {
 		return this.currencyService.create(dto);
 	}
 
+	//add 3 hour for eest
 	@Cron('0 9 * * *')
 	@UsePipes(new ValidationPipe())
 	@Get('/')
