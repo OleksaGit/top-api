@@ -14,7 +14,7 @@ import { getTelegramConfig } from './configs/telegram.config';
 import { CurrencyModule } from './currency/currency.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { getSequelizeConfig } from './configs/sequelise.config';
+import { getSequelizeConfig } from './configs/sequelize.config';
 import { UsersModule } from './users/users.module';
 import { UserModel } from './users/user.model/user.model';
 
