@@ -13,6 +13,10 @@ import { TelegramModule } from './telegram/telegram.module';
 import { getTelegramConfig } from './configs/telegram.config';
 import { CurrencyModule } from './currency/currency.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { getSequelizeConfig } from './configs/sequelise.config';
+import { UsersModule } from './users/users.module';
+import { UserModel } from './users/user.model/user.model';
 
 @Module({
   	imports: [
@@ -34,6 +38,15 @@ import { ScheduleModule } from '@nestjs/schedule';
 		}),
 		CurrencyModule,
 		ScheduleModule.forRoot(),
+		SequelizeModule.forRootAsync({
+			imports: [ConfigModule],
+			inject: [ConfigService],
+			useFactory: async (configService: ConfigService) => {
+				const config = await getSequelizeConfig(configService)
+				return {...config, models: [UserModel], autoLoadModels: true }
+			},
+		}),
+		UsersModule,
   	],
   	controllers: [AppController],
   	providers: [AppService],
