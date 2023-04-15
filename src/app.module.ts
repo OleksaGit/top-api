@@ -17,6 +17,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { getSequelizeConfig } from './configs/sequelize.config';
 import { UsersModule } from './users/users.module';
 import { UserModel } from './users/user.model/user.model';
+import { WorkshopModule } from './workshop/workshop.module';
 
 @Module({
   	imports: [
@@ -47,6 +48,7 @@ import { UserModel } from './users/user.model/user.model';
 			},
 		}),
 		UsersModule,
+		WorkshopModule,
   	],
   	controllers: [AppController],
   	providers: [AppService],
