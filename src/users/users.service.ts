@@ -9,13 +9,13 @@ import { UserModel } from '../database';
 export class UsersService {
 	constructor(
 		@InjectModel(UserModel)
-		private readonly  userModel: typeof UserModel,
+		private readonly  user: typeof UserModel,
 		// private readonly jwtService: JwtService
 	) { }
 
-	async createUser(dto: UserDto) {
+	async createUser(dto: UserDto): Promise<UserModel> {
 		const salt = await genSalt(10);
-		return await this.userModel.create({
+		return await this.user.create({
 			email: dto.login,
 			pass_hash: await hash(dto.password, salt),
 			first_name: dto.first_name,

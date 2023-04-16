@@ -3,6 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getSequelizeConfig } from '../configs/sequelize.config';
 import { UserModel } from './models/user.model';
+import { WorkshopModel } from './models/workshop.model';
 
 @Module({
 	imports: [
@@ -14,7 +15,10 @@ import { UserModel } from './models/user.model';
 				return {...config, models: [UserModel], autoLoadModels: true }
 			},
 		}),
-		SequelizeModule.forFeature([UserModel])
+		SequelizeModule.forFeature([
+			UserModel,
+			WorkshopModel,
+		])
 	],
 	exports: [SequelizeModule],
 })
