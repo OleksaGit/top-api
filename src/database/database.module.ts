@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getSequelizeConfig } from '../configs/sequelize.config';
 import { UserModel } from './models/user.model';
 import { WorkshopModel } from './models/workshop.model';
+import { StatusModel } from './models/status.model';
 
 @Module({
 	imports: [
@@ -18,6 +19,7 @@ import { WorkshopModel } from './models/workshop.model';
 		SequelizeModule.forFeature([
 			UserModel,
 			WorkshopModel,
+			StatusModel,
 		])
 	],
 	exports: [SequelizeModule],

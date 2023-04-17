@@ -11,6 +11,9 @@ export class CreateApplicationDto {
 	@IsNumber()
 	repairManagerKey: number;
 
+	@IsNumber()
+	repairStatusKey: number;
+
 	@IsObject()
 	device: Record<string, any>;
 

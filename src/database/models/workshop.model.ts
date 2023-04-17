@@ -1,5 +1,6 @@
 import { AutoIncrement, BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
 import { UserModel } from './user.model';
+import { StatusModel } from './status.model';
 
 @Table({ tableName: 'workshop' })
 export class WorkshopModel extends Model {
@@ -28,6 +29,13 @@ export class WorkshopModel extends Model {
 
 	@BelongsTo(() => UserModel)
 	repairManager: UserModel;
+
+	@ForeignKey(() => StatusModel)
+	@Column({ field: 'repair_status', allowNull: false })
+	repairStatusKey: number;
+
+	@BelongsTo(() => StatusModel)
+	repairStatus: StatusModel;
 
 	@Column({
 		field: 'device',
