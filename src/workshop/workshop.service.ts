@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { WorkshopModel } from '../database/models/workshop.model';
 import { CreateApplicationDto } from './dto/create-application.dto';
+import { WhereOptions } from 'sequelize';
 
 @Injectable()
 export class WorkshopService {
@@ -12,5 +13,12 @@ export class WorkshopService {
 
 	async createApplication(dto: CreateApplicationDto): Promise<WorkshopModel> {
 		return await this.workshop.create({...dto})
+	}
+
+	async findAllRepairs(where: WhereOptions): Promise<WorkshopModel[]> {
+		return await this.workshop.findAll({
+			where,
+			order: [['createdAt', 'DESC']]
+		});
 	}
 }
