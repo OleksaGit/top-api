@@ -21,4 +21,8 @@ export class WorkshopService {
 			order: [['createdAt', 'DESC']]
 		});
 	}
+
+	async updateApp (dto: CreateApplicationDto, id: string) {
+		return await this.workshop.update({...dto }, { where: { id } })
+	}
 }

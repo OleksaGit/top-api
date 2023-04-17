@@ -1,0 +1,1 @@
+export const APP_WITH_CURRENT_ID_NOT_FOUND = 'Заявку з таким ID не знайдено'

@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, Post, Put, Query } from '@nestjs/common';
 import { WorkshopService } from './workshop.service';
 import { CreateApplicationDto } from './dto/create-application.dto';
+import { APP_WITH_CURRENT_ID_NOT_FOUND } from './workshop.constants';
 
 @Controller('workshop')
 export class WorkshopController {
@@ -37,5 +38,14 @@ export class WorkshopController {
 
 		return this.workshopService.findAllRepairs(where)
 
+	}
+
+	@Put(':id')
+	async updateAppById(@Param('id') id, @Body() dto: CreateApplicationDto) {
+		const res = await this.workshopService.updateApp(dto, id)
+		if (res[0] === 1) {
+			return res
+		}
+		throw new NotFoundException(APP_WITH_CURRENT_ID_NOT_FOUND)
 	}
 }
