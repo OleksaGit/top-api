@@ -17,7 +17,7 @@ export class WorkshopService {
 		return await this.workshop.create({...dto})
 	}
 
-	async findAllRepairs(where: WhereOptions): Promise<WorkshopModel[]> {
+	async findApplication(where: WhereOptions): Promise<WorkshopModel[]> {
 		return await this.workshop.findAll({
 			where,
 			order: [['createdAt', 'DESC']],
@@ -42,7 +42,7 @@ export class WorkshopService {
 		});
 	}
 
-	async updateApp (dto: CreateApplicationDto, id: string) {
+	async updateApplication (dto: CreateApplicationDto, id: string) {
 		return await this.workshop.update({...dto }, { where: { id } })
 	}
 }

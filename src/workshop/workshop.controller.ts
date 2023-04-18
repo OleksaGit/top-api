@@ -9,13 +9,13 @@ export class WorkshopController {
 	}
 
 	@Post('create-app')
-	async (@Body() dto: CreateApplicationDto) {
+	async createNewApplication(@Body() dto: CreateApplicationDto) {
 		// 	throw new BadRequestException(ALREADY_REGISTERED_ERROR)
 		return this.workshopService.createApplication(dto)
 	}
 
 	@Get('repairs')
-	async findAllRepairs(
+	async findAllApplication(
 		@Query('deviceOwnerKey') deviceOwnerKey: number,
 		@Query('repairEngineerKey') repairEngineerKey: number,
 		@Query('repairManagerKey') repairManagerKey: number,
@@ -36,13 +36,13 @@ export class WorkshopController {
 			where['repairStatusKey'] = repairStatusKey;
 		}
 
-		return this.workshopService.findAllRepairs(where)
+		return this.workshopService.findApplication(where)
 
 	}
 
 	@Put(':id')
-	async updateAppById(@Param('id') id, @Body() dto: CreateApplicationDto) {
-		const res = await this.workshopService.updateApp(dto, id)
+	async updateApplicationById(@Param('id') id, @Body() dto: CreateApplicationDto) {
+		const res = await this.workshopService.updateApplication(dto, id)
 		if (res[0] === 1) {
 			return res
 		}
