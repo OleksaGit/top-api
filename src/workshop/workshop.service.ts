@@ -3,6 +3,8 @@ import { InjectModel } from '@nestjs/sequelize';
 import { WorkshopModel } from '../database/models/workshop.model';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { WhereOptions } from 'sequelize';
+import { UserModel } from '../database';
+import { StatusModel } from '../database/models/status.model';
 
 @Injectable()
 export class WorkshopService {
@@ -18,7 +20,25 @@ export class WorkshopService {
 	async findAllRepairs(where: WhereOptions): Promise<WorkshopModel[]> {
 		return await this.workshop.findAll({
 			where,
-			order: [['createdAt', 'DESC']]
+			order: [['createdAt', 'DESC']],
+			include: [
+				{
+					model: UserModel,
+					as: 'deviceOwner',
+				},
+				{
+					model: UserModel,
+					as: 'repairEngineer',
+				},
+				{
+					model: UserModel,
+					as: 'repairManager',
+				},
+				{
+					model: StatusModel,
+					as: 'repairStatus',
+				}
+			]
 		});
 	}
 

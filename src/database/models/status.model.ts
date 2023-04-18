@@ -4,7 +4,7 @@ import { AutoIncrement, Column, Model, PrimaryKey, Table } from 'sequelize-types
 export class StatusModel extends Model {
 	@PrimaryKey
 	@AutoIncrement
-	@Column({ field: 'repair_id' })
+	@Column({ field: 'status_id' })
 	id: number;
 
 	@Column({
