@@ -5,6 +5,7 @@ import { getSequelizeConfig } from '../configs/sequelize.config';
 import { UserModel } from './models/user.model';
 import { WorkshopModel } from './models/workshop.model';
 import { StatusModel } from './models/status.model';
+import { EmployeeModel } from './models/employee.model';
 
 @Module({
 	imports: [
@@ -20,6 +21,7 @@ import { StatusModel } from './models/status.model';
 			UserModel,
 			WorkshopModel,
 			StatusModel,
+			EmployeeModel,
 		])
 	],
 	exports: [SequelizeModule],

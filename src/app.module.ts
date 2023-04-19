@@ -16,6 +16,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { UsersModule } from './users/users.module';
 import { WorkshopModule } from './workshop/workshop.module';
 import { DatabaseModule } from './database/database.module';
+import { EmployeesModule } from './employees/employees.module';
 
 @Module({
   	imports: [
@@ -40,6 +41,7 @@ import { DatabaseModule } from './database/database.module';
 		UsersModule,
 		WorkshopModule,
 		DatabaseModule,
+		EmployeesModule,
   	],
   	controllers: [AppController],
   	providers: [AppService],

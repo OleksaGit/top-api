@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { WorkshopModel } from '../database/models/workshop.model';
+import { WorkshopModel } from '../database';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { WhereOptions } from 'sequelize';
 import { UserModel } from '../database';
-import { StatusModel } from '../database/models/status.model';
+import { StatusModel } from '../database';
 
 @Injectable()
 export class WorkshopService {
