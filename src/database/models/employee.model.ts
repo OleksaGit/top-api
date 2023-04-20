@@ -15,14 +15,14 @@ export class EmployeeModel extends Model {
 	@Column({ field: 'employee_id' })
 	id: number;
 
-	@Column
-	first_name: string;
+	@Column({ field: 'first_name' })
+	firstName: string;
 
-	@Column
-	last_name: string;
+	@Column({ field: 'last_name' })
+	lastName: string;
 
-	@Column
-	middle_name: string;
+	@Column({ field: 'middle_name' })
+	middleName: string;
 
 	@Column({ field: 'pass_hash' })
 	pass_hash: string;

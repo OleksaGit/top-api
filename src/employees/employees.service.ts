@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { EmployeeModel } from '../database/';
 import { EmployeeDto } from './dto/employee.dto';
 import { genSalt, hash } from 'bcryptjs';
+import { WhereOptions } from 'sequelize';
 
 @Injectable()
 export class EmployeesService {
@@ -17,5 +18,16 @@ export class EmployeesService {
 			...dto,
 			pass_hash: await hash(dto.pass, salt)
 		})
+	}
+
+	async findEmployee(where: WhereOptions): Promise<EmployeeModel[]> {
+		return await this.employee.findAll({
+			where,
+			order: [['createdAt', 'DESC']],
+		})
+	}
+
+	async updateEmployee(dto, id) {
+		return await this.employee.update({...dto }, { where: { id } })
 	}
 }

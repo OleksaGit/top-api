@@ -3,13 +3,13 @@ import { IsObject, IsString } from 'class-validator';
 export class EmployeeDto {
 
 	@IsString()
-	first_name: string;
+	firstName: string;
 
 	@IsString()
-	last_name: string;
+	lastName: string;
 
 	@IsString()
-	middle_name: string;
+	middleName: string;
 
 	@IsString()
 	pass: string;

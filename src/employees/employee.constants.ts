@@ -1,0 +1,1 @@
+export const EMPLOYEE_WITH_CURRENT_ID_NOT_FOUND = 'Працівника з таким ID не знайдено'
